@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Unity.DynamicDuo.Gameplay.LevelData
   m_levelNumber: 1
   m_tubes:
-  - {fileID: 11400000, guid: 8ac0ae1c595577e45ada3bec9a7471ab, type: 2}
-  - {fileID: 11400000, guid: d87ca2e101f89b5498c1d53dd112dd2a, type: 2}
-  - {fileID: 11400000, guid: a854bcd460d3b9a47a1b8748820cfaea, type: 2}
-  - {fileID: 11400000, guid: d913373f1c2295f429bff49f18f104fe, type: 2}
-  - {fileID: 11400000, guid: 5bce21f80a27e0e46a9727e4aa6d8978, type: 2}
-  - {fileID: 11400000, guid: cee6f0dbbc020704e95b92c11d61d0ac, type: 2}
-  - {fileID: 11400000, guid: 7040a7af886319b409995d5d5b20e84c, type: 2}
-  - {fileID: 11400000, guid: 7037a0cb972c21944968a9fc60422ece, type: 2}
+  - m_colors: 01000000010000000200000002000000
+  - m_colors: 02000000010000000300000003000000
+  - m_colors: 03000000020000000100000003000000
+  - m_colors: 01000000030000000200000001000000
+  - m_colors: 02000000030000000100000002000000
+  - m_colors: 03000000010000000200000003000000
+  - m_colors: 00000000000000000000000000000000
+  - m_colors: 00000000000000000000000000000000
