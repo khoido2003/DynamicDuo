@@ -18,8 +18,6 @@
 
 # Project Folder Structure
 
-Inspired by Boss Room's feature-based folder organization:
-
 ```
 Assets/
 │
