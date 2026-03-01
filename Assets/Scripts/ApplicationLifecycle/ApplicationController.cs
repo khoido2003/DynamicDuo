@@ -1,24 +1,51 @@
+using Unity.DynamicDuo.Gameplay;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using VContainer;
 using VContainer.Unity;
 
-public class ApplicationController : LifetimeScope
+namespace Unity.DynamicDuo.ApplicationLifecycle
 {
-    protected override void Configure(IContainerBuilder builder)
+    public class ApplicationController : LifetimeScope
     {
-        base.Configure(builder);
-    }
+        [SerializeField]
+        private GameConfig m_gameConfig;
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
+        [SerializeField]
+        private LevelData m_levelData;
 
-        SceneManager.LoadScene("MainMenu");
-    }
+        protected override void Configure(IContainerBuilder builder)
+        {
+            base.Configure(builder);
 
-    protected override void OnDestroy()
-    {
-        base.OnDestroy();
+            // Config
+            builder.RegisterInstance(m_gameConfig);
+            builder.RegisterInstance(m_levelData);
+
+            // Domain
+            builder.Register<BoardModel>(Lifetime.Singleton);
+
+            // State machine
+            builder.Register<GameStateMachine>(Lifetime.Singleton);
+
+            builder.Register<LoadingState>(Lifetime.Singleton);
+            builder.Register<GameplayState>(Lifetime.Singleton);
+            builder.Register<PausedGameState>(Lifetime.Singleton);
+            builder.Register<WinState>(Lifetime.Singleton);
+            builder.Register<LoseState>(Lifetime.Singleton);
+
+            // Entry point
+            builder.RegisterEntryPoint<GameBootstrapper>();
+        }
+
+        private void Start()
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+        }
     }
 }

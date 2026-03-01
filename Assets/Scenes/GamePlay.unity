@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93fae74f20bbe224896d7b54a86ee1e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestScript
-  m_levelData: {fileID: 0}
+  m_levelData: {fileID: 11400000, guid: b5d8c93cd64f06a4db442552ba120e23, type: 2}
   m_gameConfig: {fileID: 11400000, guid: 4334bc7e7348bbc41abcc0bd01326dc9, type: 2}
 --- !u!4 &351383728
 Transform:
