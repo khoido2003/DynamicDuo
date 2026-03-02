@@ -8,7 +8,7 @@
 - The **win condition**: every tube is either empty or filled with a single color
 - The **lose condition**: no valid moves exist (optional, you can skip this for prototype)
 
-# Key Data Questions to Answer First
+# Data Question
 - How many layers per tube? → 4
 - What is the state of a tube? → A stack of colors (max 4)
 - What defines "same color group"? → Consecutive same-color layers from top
