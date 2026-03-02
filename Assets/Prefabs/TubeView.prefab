@@ -267,10 +267,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TubeView
   m_slots:
-  - {fileID: 4898590709625814106}
-  - {fileID: 4995114960931572212}
-  - {fileID: 3424081529897205149}
   - {fileID: 7012587713374739755}
+  - {fileID: 3424081529897205149}
+  - {fileID: 4995114960931572212}
+  - {fileID: 4898590709625814106}
   m_selectionHighlight: {fileID: 35379856719784370}
   m_tubeBackground: {fileID: 1460580012193424232}
 --- !u!70 &1292848278170664849
