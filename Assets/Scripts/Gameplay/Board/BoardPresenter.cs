@@ -42,6 +42,7 @@ public class BoardPresenter : IDisposable
         ISubscriber<PourSucceededEvent> pourSucceededSub,
         ISubscriber<PourFailedEvent> pourFailedSub,
         ISubscriber<BoardRestoredEvent> boardRestoredSub,
+        IPublisher<TubeClickedEvent> tubeClickedPub,
         IPublisher<PourSucceededEvent> pourSucceededPub,
         IPublisher<PourFailedEvent> pourFailedPub,
         IPublisher<MoveCountChangedEvent> moveCountPub,
@@ -60,6 +61,7 @@ public class BoardPresenter : IDisposable
         m_pourFailedSub = pourFailedSub;
         m_boardRestoredSub = boardRestoredSub;
 
+        m_tubeClickedPub = tubeClickedPub;
         m_pourSucceededPub = pourSucceededPub;
         m_pourFailedPub = pourFailedPub;
         m_moveCountPub = moveCountPub;
@@ -121,6 +123,8 @@ public class BoardPresenter : IDisposable
             }
 
             m_selectedTubeIndex = @event.TubeIndex;
+            m_boardView.TubeViews[m_selectedTubeIndex].SetSelected(true);
+
             Debug.Log($"[BoardPresenter] Selected tube {m_selectedTubeIndex}");
             return;
         }
@@ -128,6 +132,7 @@ public class BoardPresenter : IDisposable
         // Click Same tube twice -> deselect
         if (@event.TubeIndex == m_selectedTubeIndex)
         {
+            m_boardView.TubeViews[m_selectedTubeIndex].SetSelected(false);
             m_selectedTubeIndex = -1;
             Debug.Log("[BoardPresenter] Deselected");
             return;
@@ -137,6 +142,8 @@ public class BoardPresenter : IDisposable
         int from = m_selectedTubeIndex;
         int to = @event.TubeIndex;
         m_selectedTubeIndex = -1;
+
+        m_boardView.TubeViews[from].SetSelected(false);
 
         PourResult result = m_boardModel.TryPour(from, to);
 

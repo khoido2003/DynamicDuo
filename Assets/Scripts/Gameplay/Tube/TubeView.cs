@@ -57,6 +57,7 @@ public class TubeView : MonoBehaviour
     {
         List<TubeColor> result = new();
 
+        // iterate bottom → top (model order)
         foreach (ColorSegment seg in segments)
         {
             for (int i = 0; i < seg.Count; i++)
@@ -64,6 +65,9 @@ public class TubeView : MonoBehaviour
                 result.Add(seg.Color);
             }
         }
+
+        // reverse so last (top) becomes highest slot
+        result.Reverse();
 
         return result;
     }

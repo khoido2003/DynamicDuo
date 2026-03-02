@@ -58,10 +58,10 @@ namespace Unity.DynamicDuo.Gameplay
 
             ColorSegment sourceTopSegment = source.TopSegment.Value;
 
-            if (!IsEmpty && TopSegment.Value.Color != sourceTopSegment.Color)
-            {
-                return 0;
-            }
+            //            if (!IsEmpty && TopSegment.Value.Color != sourceTopSegment.Color)
+            //          {
+            //            return 0;
+            //      }
 
             return Math.Min(sourceTopSegment.Count, FreeSpace);
         }
