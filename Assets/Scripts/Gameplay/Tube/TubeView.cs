@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.DynamicDuo.Gameplay;
 using UnityEngine;
 
@@ -14,7 +15,11 @@ public class TubeView : MonoBehaviour
     [SerializeField]
     private SpriteRenderer m_tubeBackground;
 
+    [SerializeField]
+    private GameObject m_completeIndicator;
+
     public int TubeIndex { get; private set; }
+    private bool m_isComplete = false;
 
     public event Action<int> OnClicked;
 
@@ -22,6 +27,7 @@ public class TubeView : MonoBehaviour
     {
         TubeIndex = tubeIndex;
         m_selectionHighlight.SetActive(false);
+        m_completeIndicator.SetActive(false);
     }
 
     public void RefreshSegements(IReadOnlyList<ColorSegment> segments, ColorPalette palette)
@@ -47,8 +53,30 @@ public class TubeView : MonoBehaviour
         m_selectionHighlight.SetActive(selected);
     }
 
+    public void SetComplete(bool complete)
+    {
+        m_completeIndicator.SetActive(complete);
+        m_isComplete = complete;
+    }
+
+    public void PlayShake()
+    {
+        transform.DOKill();
+
+        transform.DOShakePosition(
+            duration: 0.4f,
+            strength: new Vector3(0.15f, 0f, 0f),
+            vibrato: 20,
+            randomness: 0f
+        );
+    }
+
     private void OnMouseDown()
     {
+        if (m_isComplete)
+        {
+            return;
+        }
         OnClicked?.Invoke(TubeIndex);
     }
 
