@@ -27,9 +27,9 @@ namespace Unity.DynamicDuo.Gameplay
 
             m_currentState?.Exit();
             m_currentState = nextState;
-            m_currentState.Enter();
 
             Debug.Log($"[GameStateMachine] → {typeof(T).Name}");
+            m_currentState.Enter();
         }
 
         public bool IsInState<T>()

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af49342bda495a7478e6de708f0e45e4, type: 3}
+  m_Name: ColorPalette
+  m_EditorClassIdentifier: Assembly-CSharp::Unity.DynamicDuo.Gameplay.ColorPalette
+  m_entries:
+  - TubeColor: 1
+    DisplayColor: {r: 1, g: 0.216981, b: 0.216981, a: 0}
+  - TubeColor: 2
+    DisplayColor: {r: 0.18689913, g: 0.39124748, b: 0.9433962, a: 0}
+  - TubeColor: 3
+    DisplayColor: {r: 0.9748427, g: 0.9590778, b: 0.22991559, a: 0}
+  - TubeColor: 5
+    DisplayColor: {r: 0.98742133, g: 0.19562109, b: 0.9596258, a: 0}
+  - TubeColor: 6
+    DisplayColor: {r: 1, g: 0.45933253, b: 0, a: 0}
+  - TubeColor: 7
+    DisplayColor: {r: 1, g: 0, b: 0.52735424, a: 0}
+  - TubeColor: 8
+    DisplayColor: {r: 0, g: 1, b: 0.41124964, a: 0}
