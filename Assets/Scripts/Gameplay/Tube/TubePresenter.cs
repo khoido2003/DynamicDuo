@@ -76,7 +76,7 @@ public class TubePresenter : IDisposable
         {
             Debug.Log($"[TubePresenter] Tube {m_tubeModel.Index} invalid target");
 
-            // TODO: Add Shake animation
+            m_tubeView.PlayShake();
         }
     }
 
@@ -85,6 +85,12 @@ public class TubePresenter : IDisposable
         if (@event.FromIndex == m_tubeModel.Index || @event.ToIndex == m_tubeModel.Index)
         {
             m_tubeView.RefreshSegements(m_tubeModel.Segments, m_palette);
+
+            if (m_tubeModel.IsComplete)
+            {
+                Debug.Log($"Tube {@event.ToIndex} is complete");
+                m_tubeView.SetComplete(true);
+            }
         }
     }
 

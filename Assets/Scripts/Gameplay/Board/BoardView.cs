@@ -46,6 +46,9 @@ namespace Unity.DynamicDuo.Gameplay
                 view.Initialize(i);
                 view.RefreshSegements(tubes[i].Segments, palette);
 
+                if (tubes[i].IsComplete)
+                    view.SetComplete(true);
+
                 m_tubeViews.Add(view);
             }
         }
