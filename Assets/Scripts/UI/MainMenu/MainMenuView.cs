@@ -24,6 +24,7 @@ public class MainMenuView : MonoBehaviour
 
     private void OnPlayClicked()
     {
+        Debug.Log("Click start game");
         SceneManager.LoadScene("GamePlay");
     }
 }

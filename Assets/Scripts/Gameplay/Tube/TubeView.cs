@@ -66,9 +66,6 @@ public class TubeView : MonoBehaviour
             }
         }
 
-        // reverse so last (top) becomes highest slot
-        result.Reverse();
-
         return result;
     }
 }
