@@ -16,12 +16,14 @@ namespace Unity.DynamicDuo.UI
         public GameResultPresenter(
             GameResultView view,
             IPublisher<RestartRequestedEvent> restartPub,
-            IPublisher<NextLevelRequestedEvent> nextLevelPub
+            IPublisher<NextLevelRequestedEvent> nextLevelPub,
+            IPublisher<ReturnToMenuRequestedEvent> menuPub
         )
         {
             m_view = view;
             m_restartPub = restartPub;
             m_nextLevelPub = nextLevelPub;
+            m_menuPub = menuPub;
 
             m_view.OnRestartClicked += OnRestartClicked;
             m_view.OnNextLevelClicked += OnNextLevelClicked;
@@ -46,7 +48,7 @@ namespace Unity.DynamicDuo.UI
 
         private void OnMenuClicked()
         {
-            SceneManager.LoadScene("MainMenu");
+            m_menuPub.Publish(new ReturnToMenuRequestedEvent());
         }
 
         public void Dispose()

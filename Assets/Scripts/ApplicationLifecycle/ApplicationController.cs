@@ -17,6 +17,8 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
 
             // Config
             builder.RegisterInstance(m_gameConfig);
+
+            builder.Register<MainMenuState>(Lifetime.Singleton);
         }
 
         private void Start()
