@@ -12,6 +12,7 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
         readonly PausedGameState m_pausedState;
         readonly WinState m_winState;
         readonly LoseState m_loseState;
+        readonly MainMenuState m_mainMenuState;
 
         public GameBootstrapper(
             GameStateMachine stateMachine,
@@ -19,7 +20,8 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
             GameplayState gameplayState,
             PausedGameState pausedState,
             WinState winState,
-            LoseState loseState
+            LoseState loseState,
+            MainMenuState mainMenuState
         )
         {
             m_stateMachine = stateMachine;
@@ -28,6 +30,7 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
             m_pausedState = pausedState;
             m_winState = winState;
             m_loseState = loseState;
+            m_mainMenuState = mainMenuState;
         }
 
         public void Start()
@@ -37,6 +40,7 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
             m_stateMachine.RegisterState(m_pausedState);
             m_stateMachine.RegisterState(m_winState);
             m_stateMachine.RegisterState(m_loseState);
+            m_stateMachine.RegisterState(m_mainMenuState);
 
             // Start the game
             m_stateMachine.TransitionTo<LoadingState>();

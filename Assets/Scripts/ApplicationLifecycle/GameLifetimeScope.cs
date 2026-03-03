@@ -23,6 +23,7 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
 
             // Domain
             builder.Register<BoardModel>(Lifetime.Singleton);
+            builder.Register<LevelGeneratorModel>(Lifetime.Singleton);
 
             // State machine + states
             builder.Register<GameStateMachine>(Lifetime.Singleton);
@@ -32,6 +33,7 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
             builder.Register<WinState>(Lifetime.Singleton);
             builder.Register<LoseState>(Lifetime.Singleton);
 
+            builder.Register<MainMenuState>(Lifetime.Singleton);
             // Presentation
             builder.Register<BoardPresenter>(Lifetime.Singleton);
             builder.Register<GameResultPresenter>(Lifetime.Singleton);
@@ -50,6 +52,7 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
             RegisterChannel<WinEvent>(builder);
             RegisterChannel<LoseEvent>(builder);
             RegisterChannel<LevelLoadedEvent>(builder);
+            RegisterChannel<ReturnToMenuRequestedEvent>(builder);
 
             // Bootstrapper runs when this scene loads
             builder.RegisterEntryPoint<GameBootstrapper>();
@@ -58,6 +61,7 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
             builder.RegisterComponentInHierarchy<EventTest>();
             builder.RegisterComponentInHierarchy<BoardView>();
             builder.RegisterComponentInHierarchy<GameResultView>();
+            builder.RegisterComponentInHierarchy<InMatchView>();
 
             base.Configure(builder);
         }

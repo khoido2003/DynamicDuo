@@ -1,4 +1,4 @@
-using System;
+using Unity.DynamicDuo.Gameplay;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,6 +25,8 @@ public class MainMenuView : MonoBehaviour
     private void OnPlayClicked()
     {
         Debug.Log("Click start game");
+        LevelSession.StartGenerated(colorCount: 6, tubeCapacity: 4, emptyTubes: 2);
+
         SceneManager.LoadScene("GamePlay");
     }
 }
