@@ -41,4 +41,6 @@ namespace Unity.DynamicDuo.Infrastructure
     {
         public int LevelNumber;
     }
+
+    public struct ReturnToMenuRequestedEvent { }
 }

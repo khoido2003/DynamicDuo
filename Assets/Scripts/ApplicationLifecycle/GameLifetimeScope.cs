@@ -1,5 +1,6 @@
 using Unity.DynamicDuo.Gameplay;
 using Unity.DynamicDuo.Infrastructure;
+using Unity.DynamicDuo.UI;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -33,6 +34,7 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
 
             // Presentation
             builder.Register<BoardPresenter>(Lifetime.Singleton);
+            builder.Register<GameResultPresenter>(Lifetime.Singleton);
 
             // Message channels
             RegisterChannel<TubeClickedEvent>(builder);
@@ -55,6 +57,7 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
             // Components
             builder.RegisterComponentInHierarchy<EventTest>();
             builder.RegisterComponentInHierarchy<BoardView>();
+            builder.RegisterComponentInHierarchy<GameResultView>();
 
             base.Configure(builder);
         }
