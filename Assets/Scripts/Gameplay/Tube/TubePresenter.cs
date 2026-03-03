@@ -14,6 +14,7 @@ public class TubePresenter : IDisposable
     private readonly ISubscriber<BoardRestoredEvent> m_boardRestoreSub;
 
     private readonly IPublisher<TubeClickedEvent> m_tubesClickedPub;
+    private readonly IPublisher<TubeCompleteEvent> m_tubeCompletePub;
 
     IDisposable m_pourSucceededDisposable;
     IDisposable m_pourFailedDisposable;
@@ -26,7 +27,8 @@ public class TubePresenter : IDisposable
         ISubscriber<PourSucceededEvent> pourSucceededSub,
         ISubscriber<PourFailedEvent> pourFailedSub,
         ISubscriber<BoardRestoredEvent> boardRestoredSub,
-        IPublisher<TubeClickedEvent> tubeClickedPub
+        IPublisher<TubeClickedEvent> tubeClickedPub,
+        IPublisher<TubeCompleteEvent> tubeCompletePub
     )
     {
         m_tubeModel = model;
@@ -36,6 +38,7 @@ public class TubePresenter : IDisposable
         m_pourFailedSub = pourFailedSub;
         m_boardRestoreSub = boardRestoredSub;
         m_tubesClickedPub = tubeClickedPub;
+        m_tubeCompletePub = tubeCompletePub;
 
         // Wire view input → event bus
         m_tubeView.OnClicked += OnViewClicked;
@@ -90,6 +93,8 @@ public class TubePresenter : IDisposable
             {
                 Debug.Log($"Tube {@event.ToIndex} is complete");
                 m_tubeView.SetComplete(true);
+
+                m_tubeCompletePub.Publish(new TubeCompleteEvent { TubeIndex = m_tubeModel.Index });
             }
         }
     }

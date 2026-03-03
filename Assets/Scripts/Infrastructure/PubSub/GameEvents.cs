@@ -43,4 +43,9 @@ namespace Unity.DynamicDuo.Infrastructure
     }
 
     public struct ReturnToMenuRequestedEvent { }
+
+    public struct TubeCompleteEvent
+    {
+        public int TubeIndex;
+    }
 }

@@ -53,6 +53,7 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
             RegisterChannel<LoseEvent>(builder);
             RegisterChannel<LevelLoadedEvent>(builder);
             RegisterChannel<ReturnToMenuRequestedEvent>(builder);
+            RegisterChannel<TubeCompleteEvent>(builder);
 
             // Bootstrapper runs when this scene loads
             builder.RegisterEntryPoint<GameBootstrapper>();
@@ -62,6 +63,21 @@ namespace Unity.DynamicDuo.ApplicationLifecycle
             builder.RegisterComponentInHierarchy<BoardView>();
             builder.RegisterComponentInHierarchy<GameResultView>();
             builder.RegisterComponentInHierarchy<InMatchView>();
+
+            // Audio
+            builder.RegisterComponentInHierarchy<AudioSetup>();
+
+            builder.Register<IAudioService>(
+                resolver =>
+                {
+                    var setup = resolver.Resolve<AudioSetup>();
+                    var (sfx, music) = setup.CreateSources();
+                    return new AudioService(sfx, music, setup.Registry);
+                },
+                Lifetime.Singleton
+            );
+            // Audio controller — listens to events, calls audio service
+            builder.RegisterEntryPoint<GameplayAudioController>();
 
             base.Configure(builder);
         }
