@@ -53,6 +53,7 @@ namespace Unity.DynamicDuo.Gameplay
 
             m_winDisposable?.Dispose();
             m_loseDisposable?.Dispose();
+            ;
         }
     }
 }

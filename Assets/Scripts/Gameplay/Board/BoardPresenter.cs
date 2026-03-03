@@ -17,6 +17,7 @@ public class BoardPresenter : IDisposable
     private readonly ISubscriber<BoardRestoredEvent> m_boardRestoredSub;
 
     private readonly IPublisher<TubeClickedEvent> m_tubeClickedPub;
+    private readonly IPublisher<TubeCompleteEvent> m_tubeCompletePub;
     private readonly IPublisher<PourSucceededEvent> m_pourSucceededPub;
     private readonly IPublisher<PourFailedEvent> m_pourFailedPub;
     readonly IPublisher<MoveCountChangedEvent> m_moveCountPub;
@@ -48,7 +49,8 @@ public class BoardPresenter : IDisposable
         IPublisher<MoveCountChangedEvent> moveCountPub,
         IPublisher<BoardRestoredEvent> boardRestoredPub,
         IPublisher<WinEvent> winPub,
-        IPublisher<LoseEvent> losePub
+        IPublisher<LoseEvent> losePub,
+        IPublisher<TubeCompleteEvent> tubeCompletePub
     )
     {
         m_boardView = boardView;
@@ -66,6 +68,7 @@ public class BoardPresenter : IDisposable
         m_pourFailedPub = pourFailedPub;
         m_moveCountPub = moveCountPub;
         m_boardRestoredPub = boardRestoredPub;
+        m_tubeCompletePub = tubeCompletePub;
         m_winPub = winPub;
         m_losePub = losePub;
     }
@@ -85,7 +88,8 @@ public class BoardPresenter : IDisposable
                 m_pourSucceededSub,
                 m_pourFailedSub,
                 m_boardRestoredSub,
-                m_tubeClickedPub
+                m_tubeClickedPub,
+                m_tubeCompletePub
             );
 
             tubePresenter.Activate();
